@@ -658,8 +658,7 @@
         <DetectChar attribute="Pattern Internal Operator" context="#stay" char="^" />
         <Detect2Chars attribute="Pattern Character Class" context="#stay" char="\" char1="\" />
         <Detect2Chars attribute="Pattern Character Class" context="#stay" char="\" char1="]" />
-        <!-- JGM:  added \ before ^ in the following regex -->
-        <RegExpr attribute="Pattern Character Class" context="#stay" String="\[:\^?[a-z]+:\]" />
+        <RegExpr attribute="Pattern Character Class" context="#stay" String="\[:^?[a-z]+:\]" />
         <DetectChar attribute="Pattern Internal Operator" context="#pop" char="]" />
       </context>
 
@@ -746,7 +745,7 @@
       </context>
       <context name="here_document" attribute="String (interpolated)" lineEndContext="#stay" dynamic="true">
         <DetectSpaces />
-        <RegExpr attribute="Keyword" context="#pop#pop" String="%1" column="0" dynamic="true" endRegion="HereDocument"/>
+        <RegExpr attribute="Keyword" context="#pop#pop" String="^%1\b" column="0" dynamic="true" endRegion="HereDocument"/>
         <RegExpr attribute="Keyword" context="here_document" String="\=\s*&lt;&lt;\s*[&quot;']?([A-Z0-9_\-]+)[&quot;']?" beginRegion="HEREDoc" />
         <IncludeRules context="ipstring_internal" />
       </context>
